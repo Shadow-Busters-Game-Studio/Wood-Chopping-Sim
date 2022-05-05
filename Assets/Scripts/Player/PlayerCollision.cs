@@ -14,9 +14,7 @@ public class PlayerCollision : MonoBehaviour
     }
 
     void ProcessCollision(GameObject collider){
-        if(collider.CompareTag("Obstacle")){
-            DetectedMessage();
-        }
+        DetectedMessage();
     }
 
     void DetectedMessage(){

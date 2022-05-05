@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
         velocity.x = Input.GetAxisRaw("Horizontal"); // -1 to 1 based on input, L or R
         velocity.y = Input.GetAxisRaw("Vertical");   // -1 to 1 based on input, Up or Down
 
-        animator.SetFloat("Horizontal", velocity.x);
-        animator.SetFloat("Vertical", velocity.y);
-        animator.SetFloat("Speed", velocity.sqrMagnitude);
+        //animator.SetFloat("Horizontal", velocity.x);
+        //animator.SetFloat("Vertical", velocity.y);
+        //animator.SetFloat("Speed", velocity.sqrMagnitude);
     }
 
     // ilke Update, but in a fixed time interval (50/sec usually)
