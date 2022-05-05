@@ -1,29 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-
-// Parent class for anything that can have interaction with player
-public abstract class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
-    // makes sure collider is a trigger collider
+    // What happens when the player triggers the collider (activates some interactions)
+    public int interactableLayer = 6;
+
+    // Type of interaction object can have
+    public enum InteractionType {
+        NONE, // where nothing happens
+        ALTERABLE, // item gets altered in some way
+        EXAMINABLE // object is interacted with but unchanged
+    }
+
+    public InteractionType interactionType;
+
+    // gets called only in editor
     private void Reset(){
+        // makes specifically the boxcollider trigger instead of blocking movement
         GetComponent<BoxCollider2D>().isTrigger = true;
+        gameObject.layer = interactableLayer;
     }
 
-    // Parent class defining function for when interact is called
-    public abstract void Interact();
+    public virtual void Interact(){
+        switch(interactionType){
+            case InteractionType.NONE:
+                // nothing happens
+                Debug.Log("Interactable, but nothing happened");
+                break;
+                
+            case InteractionType.ALTERABLE:
+                // ALTER OBJ
+                Debug.Log("Interactable, object altered");
+                break;
 
-    // when we enter an interactable space (Using method from PlayerInteract script)
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.CompareTag("Player")){
-            collision.GetComponent<PlayerInteract>().OpenInteractableIcon();
+            case InteractionType.EXAMINABLE:
+                // EXAMINE OBJ
+                Debug.Log("Interactable, object examined");
+                break;
         }
     }
-
-    // when we exit an niteractable space (Using method from PlayerInteract script)
-    private void OnTriggerExit2D(Collider2D collision){
-        if(collision.CompareTag("Player")){
-            collision.GetComponent<PlayerInteract>().CloseInteractableIcon();
-        }
-    }
+    
 }

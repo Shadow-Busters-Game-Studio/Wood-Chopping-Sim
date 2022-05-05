@@ -14,7 +14,7 @@ public class PlayerCollision : MonoBehaviour
     }
 
     void ProcessCollision(GameObject collider){
-        DetectedMessage();
+        // DetectedMessage();
     }
 
     void DetectedMessage(){
