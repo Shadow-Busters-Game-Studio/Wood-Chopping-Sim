@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 velocity; // x and y speed for movement
 
+    public bool moveable;
+
+    public void Start(){
+        moveable = true;
+    }
+
     // Update is called once per frame
     void Update() {
         // for input
@@ -26,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     // ilke Update, but in a fixed time interval (50/sec usually)
     void FixedUpdate(){
         //for movement
-        rb.MovePosition(rb.position + velocity*speed*Time.fixedDeltaTime); // Time.fixedDeltaTime makes the movement consistent
+        if(moveable){
+            rb.MovePosition(rb.position + velocity*speed*Time.fixedDeltaTime); // Time.fixedDeltaTime makes the movement consistent
+        }
     }
 }

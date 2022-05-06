@@ -5,22 +5,30 @@ using TMPro;
 
 public class TimerHandler : MonoBehaviour
 {
+    // uses pausecontroller for when time is up
     public PauseController pc;
+
+    // number of seconds that the timer will last before pausing game
     public float StartTime;
+    // current number of seconds left in game
     private float CurrentTime;
 
+    // timer text mesh pro to edit the number on for UI (showing timer)
     public TMP_Text TimerUI;
 
+    // when it starts, unpause (just incase it's paused) and set the time to total time
     public void OnEnable(){
         pc.Unpause();
         CurrentTime = StartTime;
     }
 
     public void CountDown(){
+        // if theres still time left, keep conting down
         if(CurrentTime > 0){
             CurrentTime -= Time.deltaTime;
             
         }
+        // if there's no time left, trigger to game isOver flag
         if(CurrentTime < 0){
             CurrentTime = 0;
         }
@@ -32,6 +40,7 @@ public class TimerHandler : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Handles all the UI and runs countdown
         string TimeString = ((int)CurrentTime).ToString();
         TimeString += "s";
         TimerUI.text = TimeString;

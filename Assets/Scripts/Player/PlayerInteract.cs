@@ -21,7 +21,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject intDetObject;
 
     // checks for key press of interact input
-    bool InteractKeyPress(){
+    public bool InteractKeyPress(){
         return Input.GetKeyDown(interactButton);
     }
 
@@ -61,6 +61,10 @@ public class PlayerInteract : MonoBehaviour
                     sh.AddPoints(5);
                 }
                 intDetObject.GetComponent<Interactable>().Interact();
+                if(intDetObject.GetComponent<SpriteChangerInteractable>().interactionType == SpriteChangerInteractable.InteractionType.ALTERABLE){
+                    
+                }
+                intDetObject.GetComponent<Animator>().SetTrigger("Chopped");
             }
         } else {
             // otherwise, remove the interact indicator i guess
