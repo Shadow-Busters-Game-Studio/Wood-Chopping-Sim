@@ -14,6 +14,10 @@ public class ScoreHandler : MonoBehaviour
         Score += points;
     }
 
+    public void Start(){
+        Score = 0;
+    }
+
     public void Update(){
         // render the scoreboard?
         gameObject.GetComponent<TMP_Text>().text = Score.ToString();

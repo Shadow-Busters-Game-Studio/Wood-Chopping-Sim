@@ -68,7 +68,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
@@ -991,9 +991,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       GrassDirtTileMap 1_21: 1798746290
-      GrassDirtTileMap 1_25: -1007290170
+      GrassDirtTileMap 1_35: 1757190215
       GrassDirtTileMap 1_2: -253167210
-      GrassDirtTileMap 1_1: 508033674
+      GrassDirtTileMap 1_20: 2055799533
       GrassDirtTileMap 1_8: 587192551
       GrassDirtTileMap 1_24: -1354832054
       GrassDirtTileMap 1_37: 517744725
@@ -1022,13 +1022,13 @@ TextureImporter:
       GrassDirtTileMap 1_26: 4316045
       GrassDirtTileMap 1_6: 1866026517
       GrassDirtTileMap 1_27: 201842869
-      GrassDirtTileMap 1_31: 843259184
-      GrassDirtTileMap 1_35: 1757190215
-      GrassDirtTileMap 1_33: 615906601
-      GrassDirtTileMap 1_20: 2055799533
-      GrassDirtTileMap 1_22: -1452075524
-      GrassDirtTileMap 1_4: -371855618
       GrassDirtTileMap 1_38: -946445590
+      GrassDirtTileMap 1_25: -1007290170
+      GrassDirtTileMap 1_33: 615906601
+      GrassDirtTileMap 1_22: -1452075524
+      GrassDirtTileMap 1_1: 508033674
+      GrassDirtTileMap 1_4: -371855618
+      GrassDirtTileMap 1_31: 843259184
       GrassDirtTileMap 1_9: -1918998020
   spritePackingTag: 
   pSDRemoveMatte: 0
