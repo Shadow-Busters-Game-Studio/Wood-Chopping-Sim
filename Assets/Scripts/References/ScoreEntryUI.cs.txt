@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class ScoreEntryUI : MonoBehaviour
+{
+    public ScoreEntryDataHandler SEDH;
+    public List<TMP_Text> scoredisplays;
+
+    public List<ScoreEntry> highscores;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        highscores = SEDH.Load();
+        highscores.Sort((ScoreEntry x, ScoreEntry y) => y.score.CompareTo(x.score));
+        for(int i = 0; i < scoredisplays.Count; i++){
+            if(i < highscores.Count){
+                scoredisplays[i].text = highscores[i].player + ": " + highscores[i].score;
+            } else {
+                scoredisplays[i].text = "EMPTY";
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 
     // when PlayGame() is called, it brings us to the Next Scene ni the build (after this menu.)
     public void PlayGame(){
+        Debug.Log(Application.persistentDataPath);
         SceneManager.LoadScene(NextScene);
     }
 

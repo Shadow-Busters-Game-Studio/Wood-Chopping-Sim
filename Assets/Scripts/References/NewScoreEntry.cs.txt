@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using System;
+using UnityEngine.UI;
+
+public class NewScoreEntry : MonoBehaviour
+{
+    public GameObject newname;
+    public TMP_Text newscore;
+    public ScoreEntryUI SEUI;
+
+    public void AddNewScore(){
+        ScoreEntry newentry = new ScoreEntry{ player = newname.GetComponent<Text>().text, score = Int32.Parse(newscore.text) };
+        SEUI.highscores.Add(newentry);
+        SEUI.SEDH.Save(SEUI.highscores);
+    }
+}

@@ -6,9 +6,12 @@ public class PlayerSwing : MonoBehaviour
 {
     public PlayerMovement pm;
     public PlayerInteract pi;
+    public AudioClip woodhit;
+    public AudioSource playeraudio;
 
     public void Chop(){
         pm.animator.SetTrigger("Chop");
+        playeraudio.PlayOneShot(woodhit, 0.7f);
     }
 
     void Update(){

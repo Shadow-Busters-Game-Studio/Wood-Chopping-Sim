@@ -7,6 +7,7 @@ public class TimerHandler : MonoBehaviour
 {
     // uses pausecontroller for when time is up
     public PauseController pc;
+    public SavePrefs sp;
 
     // number of seconds that the timer will last before pausing game
     public float StartTime;
@@ -18,6 +19,7 @@ public class TimerHandler : MonoBehaviour
 
     // when it starts, unpause (just incase it's paused) and set the time to total time
     public void OnEnable(){
+        sp.LoadGame();
         pc.Unpause();
         CurrentTime = StartTime;
     }

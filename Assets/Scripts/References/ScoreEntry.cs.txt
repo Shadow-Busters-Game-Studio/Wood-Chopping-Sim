@@ -1,0 +1,6 @@
+using UnityEngine;
+
+public class ScoreEntry : MonoBehaviour {
+    public string player;
+    public int score;
+}

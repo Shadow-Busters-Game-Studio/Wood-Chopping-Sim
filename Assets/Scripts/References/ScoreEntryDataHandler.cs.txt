@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Xml.Serialization;
+using System.IO;
+
+public class ScoreEntryDataHandler : MonoBehaviour
+{
+    public static ScoreEntryDataHandler instance;
+    public Leaderboard leaderboard;
+    public void Save(List<ScoreEntry> toSave){
+        Debug.Log("Saving Scores");
+        leaderboard.list = toSave;
+        XmlSerializer serializer = new XmlSerializer(typeof(Leaderboard));
+
+        FileStream fs = new FileStream(Application.persistentDataPath + "/Leaderboard/highscores.xml", FileMode.Create);
+        serializer.Serialize(fs, leaderboard);
+
+        fs.Close();
+    }
+
+    public List<ScoreEntry> Load(){
+        Debug.Log("Loading Scores");
+        if(File.Exists(Application.persistentDataPath + "/Leaderboard/highscores.xml")){
+            XmlSerializer serializer = new XmlSerializer(typeof(Leaderboard));
+
+            FileStream fs = new FileStream(Application.persistentDataPath + "/Leaderboard/highscores.xml", FileMode.Open);
+            leaderboard = serializer.Deserialize(fs) as Leaderboard;
+            fs.Close();
+        }
+
+        return leaderboard.list;
+    }
+
+    void Awake(){
+        instance = this;
+
+        if(!Directory.Exists(Application.persistentDataPath + "/Leaderboard/")){
+            Directory.CreateDirectory(Application.persistentDataPath + "/Leaderboard/");
+        }
+    }
+}
+
+[System.Serializable]
+public class Leaderboard
+{
+    // literally just a class that's makeable into an XML and holds a ScoreEntry list...
+    public List<ScoreEntry> list = new List<ScoreEntry>();
+}

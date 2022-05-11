@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(AudioSource))]
 public class SpriteChangerInteractable : Interactable
 {
     // next sprite to happen once interacted
     public Sprite nextSprite;
     public Sprite lastSprite;
+    public AudioClip audio;
 
     // indicated if the sprite can only change once and never again
     public enum SCUsageType{
@@ -34,6 +36,7 @@ public class SpriteChangerInteractable : Interactable
             // and the object is only interactable ONCE,
             if(usageType == SCUsageType.ONETIMEUSE){
                 GetComponent<SpriteRenderer>().sprite = nextSprite;
+                GetComponent<AudioSource>().PlayOneShot(audio, 1.0f);
                 interactionType = InteractionType.NONE;
             
             // and the object is toggleable
